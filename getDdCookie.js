@@ -1,7 +1,7 @@
 //const url = "https://dingtalk.jiandaoyun.com/dashboard/app/5e44e189409e0f0006a58a51/get_member_signature";
 
 if($request.url.indexOf("dingtalk" && "get_member_signature") != -1){
-    getHeaders("钉钉健康打卡", "Cookie", "ddCookie");
+    //getHeaders("钉钉健康打卡", "Cookie", "ddCookie");
     getHeaders("钉钉健康打卡","X-CSRF-Token", "ddToken");
     getHeaders("钉钉健康打卡", "X-Request-ID", "ddId")
 }
