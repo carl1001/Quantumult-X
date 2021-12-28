@@ -1,24 +1,27 @@
 //const url = "https://dingtalk.jiandaoyun.com/dashboard/app/5e44e189409e0f0006a58a51/get_member_signature";
 
 if($request.url.indexOf("dingtalk" && "get_member_signature") != -1){
-    getCookie("钉钉健康打卡", "ddCookie")}
+    getHeaders("钉钉健康打卡", "cookie", "ddCookie");
+    getHeaders("钉钉健康打卡","token", "ddToken");
+    getHeaders("钉钉健康打卡", "id", "ddId")
+}
     
     
     
-function getCookie(name, key){
+function getHeaders(name, subName, key){
     var currentC = $request.headers.Cookie;
     var existC = key => $prefs.valueForKey(key);
     var create = (currentC, key) => $prefs.setValueForKey(currentC, key);
     if(currentC && existC(key)){
     currentC != existC(key) ?
     (create(currentC, key),
-    $notify(name, "更新Cookie成功", "")) :
-    console.log(name + "目前的cookie一致")
+    $notify(name, `更新${subName}成功`, "")) :
+    console.log(name + `目前的${subName}一致`)
     }else{
         currentC != undefined ? 
         (create(currentC, key),
-        $notify(name, "获取cookie成功", existC)) : 
-        $notify(name, "获取Cookie失败", "")
+        $notify(name, `获取${subName}成功`, existC)) : 
+        $notify(name, `获取${subName}失败`, "")
     }
 }
 $done({})
